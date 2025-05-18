@@ -26,4 +26,22 @@ public class ClienteService {
         return "El cliente con el siguiente ID: "+ cliente.getIdCliente()+ " fue guardado con exito";
     }
 
+    public String actualizarCliente(Cliente cliente){
+        clienterepository.save(cliente);
+        return "Cliente: " + cliente.getIdCliente()+ " actualizado con exito";
+    }
+
+    public String eliminarCliente(Integer idCliente){
+        clienterepository.deleteById(idCliente);
+        return "Cliente: "+ idCliente + "eliminado con exito";
+    }
+
+    public Cliente buscarPorId (Integer idCliente){
+        return clienterepository.findById(idCliente).orElse(null);
+    }
+
+
+
+
+
 }
