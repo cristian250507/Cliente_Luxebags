@@ -7,7 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+<<<<<<< HEAD
 import jakarta.persistence.OneToOne;
+=======
+
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,7 +46,11 @@ public class Cliente {
     @Column(nullable = false)
     private String telefono;
 
+<<<<<<< HEAD
     @OneToOne
+=======
+    @ManyToOne
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
     @JoinColumn(name = "id_direccion", nullable = false)
     private Direccion direccion;
 

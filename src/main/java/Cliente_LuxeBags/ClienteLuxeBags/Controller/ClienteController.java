@@ -40,6 +40,7 @@ public class ClienteController {
     }
 
     @PostMapping("/guardar")
+<<<<<<< HEAD
     public ResponseEntity<String> guardarCliente(@RequestBody Cliente cliente) {
         // Validar si ya existe un cliente con el mismo RUT
         Cliente clienteExistente = clienteservice.buscarPorRut(cliente.getRut());
@@ -55,14 +56,36 @@ public class ClienteController {
     @PutMapping("/actualizar")
     public ResponseEntity<String> actualizarCliente(@RequestBody Cliente cliente) {
         Cliente clienteExtistente =  clienteservice.buscarPorRut(cliente.getRut());
+=======
+    public ResponseEntity<String>guardarCliente(@RequestBody Cliente cliente) {
+
+        Cliente clienteExistente= clienteservice.buscarPorId(cliente.getIdCliente());
+        if (clienteExistente!=null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+            .body("El cliente  con id: "+ cliente.getIdCliente()+ " ya existe");
+        }
+        String mensaje= clienteservice.guardarClientes(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
+    }
+
+    
+
+    @PutMapping("/actualizar")
+    public ResponseEntity<String> actualizarCliente(@RequestBody Cliente cliente) {
+        Cliente clienteExtistente =  clienteservice.buscarPorId(cliente.getIdCliente());
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
         if (clienteExtistente == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente con Id"+ cliente.getIdCliente()+ "no encontrado");
         }
         clienteExtistente.setNombres(cliente.getNombres());
         clienteExtistente.setApellidos(cliente.getApellidos());
         clienteExtistente.setCorreoElectronico(cliente.getCorreoElectronico());
+<<<<<<< HEAD
         clienteExtistente.setFechaNacimiento(cliente.getFechaNacimiento());
         clienteExtistente.setDireccion(cliente.getDireccion());
+=======
+        clienteExtistente.setFechaNacimiento(clienteExtistente.getFechaNacimiento());
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
         String mensaje = clienteservice.actualizarCliente(clienteExtistente);
         return ResponseEntity.ok(mensaje);  // 200 OK con el mensaje de éxito
     }
@@ -83,8 +106,11 @@ public class ClienteController {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
     
     
 }

@@ -40,10 +40,13 @@ public class ClienteService {
         return clienterepository.findById(idCliente).orElse(null);
     }
 
+<<<<<<< HEAD
     public Cliente buscarPorRut(String rut) {
         return clienterepository.findByRut(rut);
     }
     
+=======
+>>>>>>> 5d9fb2e6e04607f7c3ce9ead719ad250c012e431
 
 
 
